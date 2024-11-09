@@ -2,8 +2,6 @@
 # !pip install pyTelegramBotAPI - скачивание API бота в Google Colab
 # <tg-spoiler> - скрывает сообщения, но используется parse_mode='html'
 
-import pip
-pip.prospect_parsin_news(['install', 'pyTelegramBotAPI'])
 import telebot
 
 from telebot import types
@@ -19,13 +17,13 @@ parsingBot = telebot.TeleBot(token)
 def startBot(message):
     nameUser = message.from_user.first_name
 
-    mess = f"Привет, {nameUser}!\n\nДавай напишем крутые новости!"
+    mess = f"Привет, {nameUser}!\n\nОткуда нужно получить новости!"
     if (isTest == True):
         mess += f"{version}"
-        
+
     markup = types.InlineKeyboardMarkup()
     setNewsButton = types.InlineKeyboardButton("Получить новости", callback_data= "set_news")
-    setHabrNewsButton = types.InlineKeyboardButton("Получить новости", callback_data= "set_habr_news")
+    setHabrNewsButton = types.InlineKeyboardButton("Hadr", callback_data= "set_habr_news")
     markup.add(setNewsButton, setHabrNewsButton)
     parsingBot.send_message(message.chat.id, mess, parse_mode= "Markdown", reply_markup=markup)
 
